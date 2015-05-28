@@ -2,7 +2,7 @@
 
 set -e
 
-DIR= $(dirname $(dirname "${BASH_SOURCE[0]}"))
+DIR="$(dirname $(dirname "${BASH_SOURCE[0]}"))"
 
 mkdir -p "$1/bin/"
 cp "$DIR/bin/nginx-$STACK" "$1/bin/nginx"
