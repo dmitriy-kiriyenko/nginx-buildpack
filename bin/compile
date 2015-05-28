@@ -13,7 +13,7 @@ echo '-----> nginx-buildpack: Added start-nginx to app/bin'
 
 mkdir -p "$1/config"
 
-cp config/mime.types "$1/config/"
+cp "$DIR/config/mime.types" "$1/config/"
 echo '-----> nginx-buildpack: Default mime.types copied to app/config/'
 
 if [[ ! -f $1/config/nginx.conf.erb ]]; then
