@@ -5,6 +5,7 @@ set -e
 echo $1
 echo $STACK
 ls -l
+ls -l bin/
 
 mkdir -p "$1/bin/"
 cp "bin/nginx-$STACK" "$1/bin/nginx"
