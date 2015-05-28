@@ -2,14 +2,11 @@
 
 set -e
 
-echo $1
-echo $STACK
-ls -l
-ls -l bin/
+DIR=dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 mkdir -p "$1/bin/"
-cp "bin/nginx-$STACK" "$1/bin/nginx"
-nginx_version=$(./bin/nginx-$STACK -V 2>&1 | head -1 | awk '{ print $NF }')
+cp "$DIR/bin/nginx-$STACK" "$1/bin/nginx"
+nginx_version=$($1/bin/nginx -V 2>&1 | head -1 | awk '{ print $NF }')
 echo "-----> nginx-buildpack: Installed ${nginx_version} to app/bin"
 cp bin/start-nginx "$1/bin/"
 echo '-----> nginx-buildpack: Added start-nginx to app/bin'
@@ -20,7 +17,7 @@ cp config/mime.types "$1/config/"
 echo '-----> nginx-buildpack: Default mime.types copied to app/config/'
 
 if [[ ! -f $1/config/nginx.conf.erb ]]; then
-	cp config/nginx.conf.erb "$1/config/"
+	cp "$DIR/config/nginx.conf.erb" "$1/config/"
 	echo '-----> nginx-buildpack: Default config copied to app/config.'
 else
 	echo '-----> nginx-buildpack: Custom config found in app/config.'
