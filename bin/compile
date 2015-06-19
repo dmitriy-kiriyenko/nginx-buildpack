@@ -23,3 +23,9 @@ else
 	echo '-----> nginx-buildpack: Custom config found in app/config.'
 fi
 exit 0
+
+if [[ -f $1/gulpfile.js ]]; then
+	pushd $1
+	gulp build
+	popd
+fi
