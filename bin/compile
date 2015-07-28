@@ -23,13 +23,4 @@ else
 	echo '-----> nginx-buildpack: Custom config found in app/config.'
 fi
 
-if [[ -f $1/package.json ]]; then
-	pushd $1
-	sudo apt-get update
-	sudo apt-get install nodejs
-	sudo apt-get install npm
-	npm build
-	popd
-fi
-
 exit 0
