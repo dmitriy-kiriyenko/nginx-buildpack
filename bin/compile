@@ -25,6 +25,9 @@ fi
 
 if [[ -f $1/package.json ]]; then
 	pushd $1
+	apt-get update
+	apt-get install nodejs
+	apt-get install npm
 	npm build
 	popd
 fi
