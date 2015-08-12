@@ -23,10 +23,4 @@ else
 	echo '-----> nginx-buildpack: Custom config found in app/config.'
 fi
 
-if [[ -f $1/package.json ]]; then
-	pushd $1
-	type npm > /dev/null 2>&1 && npm run build || echo "-----> nginx-buildpack: File package.json exists but no npm! Use buildpack-multi."
-	popd
-fi
-
 exit 0
